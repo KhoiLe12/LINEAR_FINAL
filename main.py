@@ -39,7 +39,7 @@ if 'survey_results' not in st.session_state:
 if 'manual_ratings' not in st.session_state:
     st.session_state.manual_ratings = {}
 
-st.title("🎬 Local SVD Recommender")
+st.title("🎬Recommender")
 
 # ==========================================
 # STEP 1: SURVEY
@@ -87,7 +87,6 @@ if st.session_state.step == 1:
             with st.container(border=True):
                 st.markdown(f"### {row['title']}")
                 st.write(f"**Genres:** {row['genres'].replace('|', ', ')}")
-                st.caption(f"Vector Alignment Score: {row['profile_score']}")
 
         st.divider()
         if st.button("Continue to Rate Movies →", type="primary"):
@@ -190,4 +189,3 @@ elif st.session_state.step == 2:
                 with st.container(border=True):
                     st.markdown(f"### {row['title']}")
                     st.write(f"**Genres:** {row['genres'].replace('|', ', ')}")
-                    st.progress(min(row['predicted_rating'] / 5.0, 1.0), text=f"Predicted Rating: {row['predicted_rating']:.2f} / 5.0")
