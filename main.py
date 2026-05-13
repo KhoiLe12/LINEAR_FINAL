@@ -66,6 +66,9 @@ if st.session_state.step == 1:
             'Romance': weight_romance,
             'Drama': weight_romance,
         }
+        if sum(user_vector.values()) == 0:
+            st.error("⚠️ Math Error: Vector magnitude cannot be zero. Please give at least one genre a weight greater than 0.")
+            st.stop() # This halts the script so the math doesn't break
 
         def calculate_movie_score(genre_string):
             if pd.isna(genre_string):
